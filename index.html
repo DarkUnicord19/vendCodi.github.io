@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vending Machine Catalogue</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    .item {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .item:hover {
+        background-color: #f9f9f9;
+    }
+    button {
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Vending Machine Catalogue</h1>
+    <div class="item" data-name="Soda" data-price="1.50">Soda - $1.50 <button>Add to Cart</button></div>
+    <div class="item" data-name="Chips" data-price="1.00">Chips - $1.00 <button>Add to Cart</button></div>
+    <div class="item" data-name="Candy" data-price="0.75">Candy - $0.75 <button>Add to Cart</button></div>
+    <div class="item" data-name="Water" data-price="2.00">Water - $2.00 <button>Add to Cart</button></div>
+    <div id="cart"></div>
+</div>
+<script>
+    const items = document.querySelectorAll('.item');
+    const cart = document.getElementById('cart');
+    let totalCost = 0;
+
+    items.forEach(item => {
+        const button = item.querySelector('button');
+        button.addEventListener('click', () => {
+            const name = item.getAttribute('data-name');
+            const price = parseFloat(item.getAttribute('data-price'));
+            totalCost += price;
+            cart.innerHTML = `Total Cost: $${totalCost.toFixed(2)}`;
+        });
+    });
+</script>
+</body>
+</html>
